@@ -63,3 +63,31 @@ npm install c:/tempsourcefolder/node-red-contrib-mcprotocol
 
 ### Credits
 * [plcpeople](https://github.com/plcpeople/mcprotocol) for the original implementation of mcprotocol
+
+### Local easy-install scripts
+
+This updated package includes installers for a local Node-RED user directory. Both scripts require Node.js 26 or newer and default to the standard `.node-red` directory.
+
+Linux:
+
+```bash
+./install-linux.sh
+```
+
+Windows Command Prompt:
+
+```bat
+install-windows.cmd
+```
+
+To use a custom Node-RED user directory, pass it as the first argument:
+
+```bash
+./install-linux.sh /path/to/node-red-user-dir
+```
+
+```bat
+install-windows.cmd "D:\path\to\node-red-user-dir"
+```
+
+Restart Node-RED after installation, then refresh the editor. The scripts do not stop or restart Node-RED automatically.

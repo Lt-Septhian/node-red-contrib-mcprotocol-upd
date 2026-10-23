@@ -45,6 +45,21 @@ if not exist "%NODE_RED_DIR%\package.json" (
 
 echo Installing node-red-contrib-mcprotocol from: %PACKAGE_DIR%
 echo Node-RED user directory: %NODE_RED_DIR%
+
+if exist "%NODE_RED_DIR%\node_modules\node-red-contrib-mcprotocol" (
+  echo Existing node-red-contrib-mcprotocol installation detected.
+  echo Removing the previous installation...
+  call npm uninstall --prefix "%NODE_RED_DIR%" node-red-contrib-mcprotocol
+  if errorlevel 1 (
+    echo.
+    echo Removal failed. The previous installation was left in place.
+    set "EXIT_CODE=1"
+    goto :finish
+  )
+  echo Previous installation removed successfully.
+  echo.
+)
+
 call npm install --prefix "%NODE_RED_DIR%" "%PACKAGE_DIR%"
 if errorlevel 1 (
   echo.
